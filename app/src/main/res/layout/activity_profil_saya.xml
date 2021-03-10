@@ -5,18 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfilSaya">
+    <androidx.appcompat.widget.Toolbar
+        app:title="Now Playing"
+        app:titleTextColor="@color/white"
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
     <TextView
         android:id="@+id/Nim"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="NIM   : 00000027101"
-        app:layout_constraintBottom_toTopOf="@+id/Nama"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.375"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -24,12 +34,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nama: Afri Sanjaya"
-        app:layout_constraintBottom_toTopOf="@+id/Kelas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.359"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintTop_toBottomOf="@+id/Nim"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -37,23 +45,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Kelas : EL"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintHorizontal_bias="0.302"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.274"
+        app:layout_constraintTop_toBottomOf="@+id/Nama"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="68dp"
         android:fontFamily="sans-serif-black"
         android:text="Referensi:"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Kelas"
         tools:ignore="MissingConstraints" />
@@ -62,12 +68,11 @@
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="144dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.146"
+        app:layout_constraintTop_toBottomOf="@+id/my_toolbar"
         app:srcCompat="@drawable/c" />
 
 
