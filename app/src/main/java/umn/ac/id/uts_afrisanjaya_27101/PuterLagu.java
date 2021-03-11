@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -26,6 +25,7 @@ public class PuterLagu extends AppCompatActivity {
     MediaPlayer Hutao;
     ArrayList<LaguWibu> Ganyu  = new ArrayList();
     int mPosisi;
+    Runnable runnable;
 
 
     @Override
@@ -35,17 +35,18 @@ public class PuterLagu extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
-        // showing the back button in action bar
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
+        PahaUeno = (SeekBar) this.findViewById(R.id.PutihMulus);
         Ganyu = (ArrayList<LaguWibu>) bundle.getSerializable("PahaLisa");
         mPosisi = (int) bundle.getSerializable("RajaLele");
         prev = (ImageButton) this.findViewById(R.id.prev);
         next = (ImageButton) this.findViewById(R.id.next);
         playTIpause = (ImageButton) this.findViewById(R.id.play);
         judul = (TextView) this.findViewById(R.id.judul);
+        
         Qiqi();
 
         prev.setOnClickListener(new View.OnClickListener(){
@@ -83,7 +84,35 @@ public class PuterLagu extends AppCompatActivity {
             }
         });
 
+        PahaUeno.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+            public void onProgressChanged(SeekBar PahaUeno, int progress, boolean fromUser){
+                if(fromUser){
+                    Hutao.seekTo(progress);
+                    PahaUeno.setProgress(progress);
+                }
+
+            }
+            public void onStartTrackingTouch(SeekBar arg0) {
+                // TODO Auto-generated method stub
+            }
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+        });
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (Hutao != null) {
+            Hutao.pause();
+            if (isFinishing()) {
+                Hutao.stop();
+                Hutao.release();
+            }
+        }
+    }
+
 
     public void Qiqi(){
         try{
@@ -93,7 +122,21 @@ public class PuterLagu extends AppCompatActivity {
         Hutao = Hutao.create(this,Uri.parse(Ganyu.get(mPosisi).getLaguURI()));
         playTIpause.setImageResource(R.drawable.pause);
         judul.setText(Ganyu.get(mPosisi).getJudul());
+        PahaUeno.setMax(Hutao.getDuration());
         Hutao.start();
+        updateSeebar();
+    }
+
+    private void updateSeebar() {
+        int currPos = Hutao.getCurrentPosition();
+        PahaUeno.setProgress(currPos);
+
+        runnable = new Runnable(){
+            @Override
+            public void run(){
+                updateSeebar();
+            }
+        };
     }
 
     @Override

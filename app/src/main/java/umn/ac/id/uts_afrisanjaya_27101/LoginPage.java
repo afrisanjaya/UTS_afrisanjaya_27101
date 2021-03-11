@@ -44,7 +44,13 @@ public class LoginPage extends AppCompatActivity {
                 }
             }
         });
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        username = (EditText) null;
+        password = (EditText) null;
     }
 
 

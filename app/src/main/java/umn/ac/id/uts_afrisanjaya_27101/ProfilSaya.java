@@ -17,7 +17,6 @@ public class ProfilSaya extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
-        // showing the back button in action bar
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
     @Override

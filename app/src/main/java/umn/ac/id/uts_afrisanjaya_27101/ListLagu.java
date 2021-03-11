@@ -1,22 +1,16 @@
 package umn.ac.id.uts_afrisanjaya_27101;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
-import android.app.AlertDialog;
+
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -42,6 +36,7 @@ public class ListLagu extends AppCompatActivity {
         rvDaftarVideo.setAdapter(mAdapter);
         rvDaftarVideo.setLayoutManager(new LinearLayoutManager(this));
         openDialog();
+
 
     }
     public void isiDaftarVideo(){
