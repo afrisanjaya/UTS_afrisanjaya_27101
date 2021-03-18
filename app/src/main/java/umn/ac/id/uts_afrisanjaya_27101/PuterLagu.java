@@ -151,4 +151,12 @@ public class PuterLagu extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (Hutao!=null){
+            Hutao.release();
+        }
+    }
 }

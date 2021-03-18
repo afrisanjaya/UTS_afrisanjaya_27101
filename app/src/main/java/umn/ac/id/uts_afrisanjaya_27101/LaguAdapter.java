@@ -65,6 +65,7 @@ public class LaguAdapter extends RecyclerView.Adapter<LaguAdapter.ItemLaguViewHo
             bundle.putSerializable("RajaLele",mPosisi);
             detilInten.putExtras(bundle);
             mContext.startActivity(detilInten);
+
         }
 
     }
